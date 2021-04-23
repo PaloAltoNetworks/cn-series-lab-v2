@@ -8,14 +8,14 @@ data:
   PAN_MGMT_SECRET: pan-mgmt-secret
 
   # Panorama settings
-  PAN_PANORAMA_IP: "34.72.169.101"
-  PAN_DEVICE_GROUP: "dev-dg"
-  PAN_TEMPLATE_STACK: "k8s-stack"
-  PAN_CGNAME: "Panorama"
+  PAN_PANORAMA_IP: "<panorama-IP>"
+  PAN_DEVICE_GROUP: "<panorama-device-group>"
+  PAN_TEMPLATE_STACK: "<panorama-template-stack>"
+  PAN_CGNAME: "<panorama-collector-group>"
 
   # Intended License Bundle type - "CN-X-BASIC", "CN-X-BND1", "CN-X-BND2"
   # based on the authcode applied on the Panorama K8S plugin"
-  PAN_BUNDLE_TYPE: "CN-X-BND2"
+  PAN_BUNDLE_TYPE: "<license-bundle-type>"
 
 #Non-mandatory parameters
   # Recommended to have same name as the cluster name provided in Panorama Kubernetes plugin - helps with easier identification of pods if managing multiple clusters with same Panorama
@@ -31,3 +31,11 @@ data:
   
   # Override auto-detect of jumbo-frame mode and force enable system-wide
   #PAN_JUMBO_FRAME_ENABLED: "true"
+  
+  # Start MGMT pod with GTP enabled. For complete functionality, need GTP 
+  # enable at Panorama as well.
+  #PAN_GTP_ENABLED: "true"
+  
+  # Enable high feature capacities. These need high memory for MGMT pod and
+  # higher/matching memory than specified below for NGFW pod.
+  #PAN_NGFW_MEMORY="40Gi"

@@ -51,7 +51,7 @@ spec:
              topologyKey: "kubernetes.io/hostname"
       initContainers:
         - name: pan-mgmt-init
-          image: docker.io/paloaltonetworks/pan_cn_mgmt_init:latest
+          image: <your-private-registry-image-path>
           command: ["/usr/bin/pan_start.sh"]
           imagePullPolicy: Always
           securityContext:
@@ -89,7 +89,7 @@ spec:
             value: pan-fw
       containers:
         - name: pan-mgmt
-          image: docker.io/paloaltonetworks/panos_cn_mgmt:10.0.1
+          image: <your-private-registry-image-path>
           terminationMessagePolicy: FallbackToLogsOnError
           command: ["/sbin/pan_start"]
           lifecycle:
