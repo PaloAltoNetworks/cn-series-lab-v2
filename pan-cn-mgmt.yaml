@@ -33,6 +33,8 @@ spec:
       labels:
         app: pan-mgmt
         appname: pan-mgmt-sts
+      annotations:
+          paloaltonetworks.com/app: pan-mgmt
     spec:
       serviceAccountName: pan-mgmt-sa
       priorityClassName: system-node-critical
@@ -142,6 +144,10 @@ spec:
           envFrom:
           - configMapRef:
               name: pan-mgmt-config
+          # Uncomment the below 3 lines to enable HPA
+          #envFrom:
+          #- configMapRef:
+          #    name: pan-hpa-config
           env:
           - name: MY_POD_UID
             valueFrom:

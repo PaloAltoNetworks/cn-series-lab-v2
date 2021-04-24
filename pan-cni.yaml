@@ -25,6 +25,7 @@ spec:
         # marks the pod as a critical add-on, ensuring it gets
         # priority scheduling and that its resources are reserved
         # if it ever gets evicted.
+        paloaltonetworks.com/app: pan-cni
         scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
       nodeSelector:
@@ -74,6 +75,14 @@ spec:
             # picked up/propogated before makring pan-cni-ready (default 30 seconds)
             #- name: CNI_READY_DELAY
             #  value: "10"
+            - name: MY_POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           volumeMounts:
             - mountPath: /host/opt/cni/bin
               name: cni-bin-dir
